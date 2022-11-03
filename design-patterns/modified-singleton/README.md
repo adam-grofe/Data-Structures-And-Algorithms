@@ -1,3 +1,5 @@
+[![CMake](https://github.com/adam-grofe/Data-Structures-And-Algorithms/actions/workflows/singleton_factory.yml/badge.svg?branch=main)](https://github.com/adam-grofe/Data-Structures-And-Algorithms/actions/workflows/singleton_factory.yml)
+
 # Description
 There are often times that you need to ensure programmatically 
 that there is one and only one instantiation of a class. This 
