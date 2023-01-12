@@ -45,9 +45,9 @@ SingletonFactory<Object>* SingletonFactory<Object>::instance = nullptr;
 ```
 
 # Compilation
-```
+```bash
 mkdir build && cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DCOMPILE_TESTS=On <path/to/source>
+cmake -DCMAKE_BUILD_TYPE=Release -DCOMPILE_TESTS=On -DSTATIC_ANALYSIS=On <path/to/source>
 cmake --build .
 ctest
 ```
