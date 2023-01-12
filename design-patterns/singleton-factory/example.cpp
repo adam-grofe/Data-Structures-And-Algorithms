@@ -4,34 +4,34 @@
 #define SINGLETON_DEBUG
 #include "singleton_factory.hpp"
 
+class Object
+{
+  private:
+    // Make friends with Singleton so that it can create
+    // this class
+    friend class SingletonFactory<Object>;
 
-class Object {
-   private:
-   // Make friends with Singleton so that it can create
-   // this class
-   friend class SingletonFactory<Object>;
+    // Private Constructor prevents creation except through
+    // the singleton class.
+    Object()
+    {
+        std::cout << "Object::Object()" << std::endl;
+    }
+    Object(Object&) = delete;
 
-   // Private Constructor prevents creation except through
-   // the singleton class.
-   Object(){
-       std::cout << "Object::Object()" << std::endl;
-   }
-   Object(Object&) = delete;
-
-   public:
-
-   // Public destructor is necessary so that shared_ptr/weak_ptr
-   ~Object(){
-       std::cout << "Object::~Object()" << std::endl;
-   }
+  public:
+    // Public destructor is necessary so that shared_ptr/weak_ptr
+    ~Object()
+    {
+        std::cout << "Object::~Object()" << std::endl;
+    }
 };
 
+// Initialize pointer to zero so that it can be initialized in first call to getInstance
+template <> SingletonFactory<Object>* SingletonFactory<Object>::instance = nullptr;
 
-//Initialize pointer to zero so that it can be initialized in first call to getInstance
-template<>
-SingletonFactory<Object>* SingletonFactory<Object>::instance = nullptr;
-
-int main(){
+int main()
+{
     std::cout << "Entering Main\n";
     // First lifetime
     std::cout << "First Lifetime: " << std::endl;
@@ -58,4 +58,3 @@ int main(){
     std::cout << "Exiting Main\n";
     return 0;
 }
-
