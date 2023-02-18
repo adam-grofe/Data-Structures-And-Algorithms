@@ -23,5 +23,7 @@ if( ${STATIC_ANALYSIS} )
 endif()
 
 find_package(benchmark REQUIRED)
+include(CMakePrintHelpers)
+cmake_print_properties(TARGETS benchmark::benchmark PROPERTIES LOCATION INTERFACE_INCLUDE_DIRECTORIES)
 target_link_libraries(benchmark benchmark::benchmark)
 target_include_directories(benchmark PUBLIC benchmark::benchmark)
